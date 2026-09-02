@@ -1,0 +1,53 @@
+
+# Godot 4.x generated files
+.godot/
+
+# Godot import/cache files
+.import/
+
+# Exported builds
+/export/
+/exports/
+/build/
+/builds/
+
+# Logs
+*.log
+
+# Editor / IDE files
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# C# / .NET generated files (if using Godot .NET)
+.vs/
+bin/
+obj/
+*.csproj
+*.sln
+*.user
+*.userprefs
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+
+# Mono / NuGet
+.nuget/
+packages/
+
+# Crash dumps
+*.dmp
