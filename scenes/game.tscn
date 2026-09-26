@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bkg85bmr4d1yw" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://n86ip5hd7ftp" path="res://assets/sprites/world_tileset.png" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://bja83j3t0wi1m" path="res://scenes/platform.tscn" id="3_lnu2h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -162,12 +163,49 @@ texture = ExtResource("2_yqjtg")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 
+[sub_resource type="Animation" id="Animation_lnu2h"]
+resource_name = "Move"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(239, 164), Vector2(304, 164)]
+}
+
+[sub_resource type="Animation" id="Animation_lbhrr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(231, 137)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lbhrr"]
+_data = {
+&"Move": SubResource("Animation_lnu2h"),
+&"RESET": SubResource("Animation_lbhrr")
+}
+
 [node name="Game" type="Node2D" unique_id=795591295]
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1798081819]
 tile_set = SubResource("TileSet_urwkd")
 format = 2
-layer_0/tile_data = PackedInt32Array(655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 458768, 0, 0, 458769, 0, 0, 458770, 0, 0, 786448, 0, 0, 786449, 0, 0, 786450, 0, 0, 786451, 0, 0, 786452, 0, 0, 262165, 0, 0, 262166, 0, 0, 262167, 0, 0, 262168, 0, 0, 262169, 0, 0, 720906, 0, 1, 720907, 0, 1, 720908, 0, 1, 720909, 0, 1, 786445, 0, 1, 786444, 0, 1, 786443, 0, 1, 786442, 0, 1, 524304, 393216, 1, 524305, 393216, 1, 524306, 393216, 1, 851984, 393216, 1, 851985, 393216, 1, 851986, 393216, 1, 851987, 393216, 1, 851988, 393216, 1, 327701, 393216, 1, 327702, 393216, 1, 327703, 393216, 1, 327704, 393216, 1, 327705, 393216, 1, 720900, 0, 0, 720901, 0, 0, 720902, 0, 0, 786436, 65536, 0, 786437, 65536, 0, 786438, 65536, 0, 720903, 589824, 2, 720904, 655360, 2, 720905, 720896, 2, 524298, 131072, 4, 327698, 131072, 4, 655379, 131072, 4, 589828, 131072, 4, 131096, 131072, 4, 327696, 0, 3, 131094, 0, 3)
+layer_0/tile_data = PackedInt32Array(655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 720906, 0, 1, 720907, 0, 1, 720908, 0, 1, 720909, 0, 1, 786445, 0, 1, 786444, 0, 1, 786443, 0, 1, 786442, 0, 1, 720900, 0, 0, 720901, 0, 0, 720902, 0, 0, 786436, 65536, 0, 786437, 65536, 0, 786438, 65536, 0, 720903, 589824, 2, 720904, 655360, 2, 720905, 720896, 2, 524298, 131072, 4, 589828, 131072, 4, 655388, 0, 0, 720924, 393216, 1, 655389, 0, 0, 720925, 393216, 1, 655390, 0, 0, 720926, 393216, 1, 524319, 131072, 4, 655391, 0, 0, 720927, 393216, 1, 655392, 0, 0, 720928, 393216, 1, 524308, 0, 3, 655380, 0, 0, 720916, 393216, 1, 655381, 0, 0, 720917, 393216, 1, 524310, 131072, 4, 655382, 0, 0, 720918, 393216, 1, 262168, 0, 0, 327704, 393216, 1, 262169, 0, 0, 327705, 393216, 1, 131097, 0, 3, 262170, 0, 0, 327706, 393216, 1, 131099, 131072, 4, 262171, 0, 0, 327707, 393216, 1, 262172, 0, 0, 327708, 393216, 1)
 
 [node name="Player" parent="." unique_id=600814041 instance=ExtResource("1_uwrxv")]
 position = Vector2(203, 149)
@@ -176,3 +214,10 @@ position = Vector2(203, 149)
 position = Vector2(1, -20)
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
+
+[node name="Platform" parent="." unique_id=1863059629 instance=ExtResource("3_lnu2h")]
+position = Vector2(231, 137)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform" unique_id=223761190]
+libraries/ = SubResource("AnimationLibrary_lbhrr")
+autoplay = &"Move"
